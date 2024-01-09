@@ -40,29 +40,26 @@ class SubActivity : AppCompatActivity() {
         text_date.setText(formatType.format(nowDate))
 
         var t_expenseType = "주유비"
-        binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-        binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-        binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
 
         binding.buttonOil.setOnClickListener{
             t_expenseType = "주유비"
-            binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-            binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-            binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.imageOil.setImageResource(R.drawable.oil_2)
+            binding.imageWash.setImageResource(R.drawable.wash_1)
+            binding.imageRepair.setImageResource(R.drawable.repair_1)
         }
 
         binding.buttonWash.setOnClickListener{
             t_expenseType = "세차비"
-            binding.buttonOil.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-            binding.buttonWash.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-            binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.imageOil.setImageResource(R.drawable.oil_1)
+            binding.imageWash.setImageResource(R.drawable.wash_2)
+            binding.imageRepair.setImageResource(R.drawable.repair_1)
         }
 
         binding.buttonRepair.setOnClickListener{
             t_expenseType = "수리비"
-            binding.buttonOil.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-            binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-            binding.buttonRepair.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+            binding.imageOil.setImageResource(R.drawable.oil_1)
+            binding.imageWash.setImageResource(R.drawable.wash_1)
+            binding.imageRepair.setImageResource(R.drawable.repair_2)
         }
 
         val edittext_cost: EditText = findViewById(R.id.editText_cost)
