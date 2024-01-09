@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = Intent(this, SubActivity::class.java)
-        binding.imageButton.setOnClickListener{startActivity(intent)}
+        binding.gotoUploadButton.setOnClickListener{startActivity(intent)}
     }
 }
