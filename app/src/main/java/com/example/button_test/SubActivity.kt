@@ -39,6 +39,21 @@ class SubActivity : AppCompatActivity() {
         val formatType = SimpleDateFormat("yyyy-MM-dd")
         text_date.setText(formatType.format(nowDate))
 
+        var t_expenseType = "주유비"
+        binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+        binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+
+        binding.buttonOil.setOnClickListener{
+            t_expenseType = "주유비"
+            binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+            binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+        }
+
+        binding.buttonWash.setOnClickListener{
+            t_expenseType = "세차비"
+            binding.buttonOil.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.buttonWash.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+        }
 
         val edittext_cost: EditText = findViewById(R.id.editText_cost)
         val button_upload: Button = findViewById(R.id.button_upload)
@@ -63,17 +78,16 @@ class SubActivity : AppCompatActivity() {
         })
 
         binding.buttonUpload.setOnClickListener{
-            Log.d("Tag1", "누름")
-            val t_expenseType = "주유비"
-            val t_amount:Double = edittext_cost.getText().toString().toDouble()
+            Log.e("TAG", t_expenseType)
+            val t_amount = edittext_cost.getText().toString().toDouble()
             val t_userId = 1
-            startUpload(t_expenseType, t_amount, nowDate, t_userId)
+            startUpload(t_expenseType, t_amount, formatType.format(nowDate), t_userId)
         }
     }
 
 }
 
-fun startUpload(expenseType:String, amount:Double, date:Date, userId:Int){
+fun startUpload(expenseType:String, amount:Double, date:String, userId:Int){
     val info = costRequest(expenseType, amount, date, userId)
 
     costInfo.cost_Service.task_list_send(info)
