@@ -150,6 +150,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/wash_1" />
 
+    <ImageView
+        android:id="@+id/image_repair"
+        android:layout_width="97dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/image_wash"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/repair_1" />
+
     <Button
         android:id="@+id/button_oil"
         android:layout_width="0dp"
@@ -171,5 +181,15 @@
         app:layout_constraintStart_toStartOf="@+id/image_wash"
         app:layout_constraintTop_toTopOf="@+id/image_wash"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button_repair"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/image_repair"
+        app:layout_constraintEnd_toEndOf="@+id/image_repair"
+        app:layout_constraintStart_toStartOf="@+id/image_repair"
+        app:layout_constraintTop_toTopOf="@+id/image_repair" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

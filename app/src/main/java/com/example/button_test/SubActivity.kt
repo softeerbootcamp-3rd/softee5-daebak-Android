@@ -42,17 +42,27 @@ class SubActivity : AppCompatActivity() {
         var t_expenseType = "주유비"
         binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
         binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+        binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
 
         binding.buttonOil.setOnClickListener{
             t_expenseType = "주유비"
             binding.buttonOil.setBackgroundColor(Color.parseColor("#00FFFFFF"))
             binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
         }
 
         binding.buttonWash.setOnClickListener{
             t_expenseType = "세차비"
             binding.buttonOil.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
             binding.buttonWash.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+            binding.buttonRepair.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+        }
+
+        binding.buttonRepair.setOnClickListener{
+            t_expenseType = "수리비"
+            binding.buttonOil.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.buttonWash.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            binding.buttonRepair.setBackgroundColor(Color.parseColor("#00FFFFFF"))
         }
 
         val edittext_cost: EditText = findViewById(R.id.editText_cost)
