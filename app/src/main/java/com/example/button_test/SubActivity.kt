@@ -14,7 +14,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.button_test.databinding.ActivitySubBinding
-import com.example.button_test.service.cost_service
+import com.example.button_test.service.Cost_Service
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Response
@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.Date
+import java.util.concurrent.TimeUnit
 
 class SubActivity : AppCompatActivity() {
     val binding by lazy{ ActivitySubBinding.inflate(layoutInflater)}
@@ -44,7 +45,7 @@ class SubActivity : AppCompatActivity() {
 
         edittext_cost.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                //텍스트를 입력 후
+                //텍스트 입력 후
             }
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //텍스트 입력 전
@@ -53,48 +54,38 @@ class SubActivity : AppCompatActivity() {
                 //텍스트 입력 중
                 if(edittext_cost.length() > 0) {
                     button_upload.isClickable = true
-                    button_upload.setBackgroundColor(Color.rgb(255, 96, 67));
+                    button_upload.setBackgroundColor(Color.rgb(255, 96, 67))
                 } else {
                     button_upload.isClickable = false
-                    button_upload.setBackgroundColor(Color.rgb(224,224,224));
+                    button_upload.setBackgroundColor(Color.rgb(224,224,224))
                 }
             }
         })
 
         binding.buttonUpload.setOnClickListener{
             Log.d("Tag1", "누름")
-            val expenseType = "주유비"
-            val amount:Double = edittext_cost.getText().toString().toDouble()
-            val date = nowDate
-            val userId = 1
-            startUpload(costRequest(expenseType, amount, date, userId))
-
+            val t_expenseType = "주유비"
+            val t_amount:Double = edittext_cost.getText().toString().toDouble()
+            val t_userId = 1
+            startUpload(t_expenseType, t_amount, nowDate, t_userId)
         }
-        Log.d("Tag1", "성공")
     }
 
 }
 
-private fun startUpload(data: costRequest){
-    val info = costInfo.cost_service
+fun startUpload(expenseType:String, amount:Double, date:Date, userId:Int){
+    val info = costRequest(expenseType, amount, date, userId)
 
-    info.task_list_send(data)
+    costInfo.cost_Service.task_list_send(info)
         .enqueue(object: retrofit2.Callback<costResponse>{
             override fun onResponse(call: Call<costResponse>,response: Response<costResponse>) {
-                //성공
+                if (response.isSuccessful()){
+                    Log.e("TAG", "성공")
+                }
             }
 
             override fun onFailure(call: Call<costResponse>, t: Throwable) {
                 //실패
             }
         })
-}
-
-object costInfo{
-    val retrofit= Retrofit.Builder()
-        .baseUrl("https://c0c3-221-149-4-114.ngrok-free.app/costs")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    val cost_service: cost_service by lazy{retrofit.create(cost_service::class.java)}
 }

@@ -6,8 +6,8 @@ import com.example.button_test.costResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface cost_service {
+interface Cost_Service {
     // 비용 생성
-    @POST("https://c0c3-221-149-4-114.ngrok-free.app/costs")
+    @POST("costs")
     fun task_list_send(@Body request: costRequest): Call<costResponse>
 }

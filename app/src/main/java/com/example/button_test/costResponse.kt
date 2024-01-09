@@ -1,3 +1,9 @@
 package com.example.button_test
 
-data class costResponse(var success: Boolean, var code: Int, var message: String)
+import com.google.gson.annotations.SerializedName
+
+data class costResponse(
+    @SerializedName("success") var user_success: Boolean,
+    @SerializedName("code") var user_code: Int,
+    @SerializedName("message")var user_message: String
+)
