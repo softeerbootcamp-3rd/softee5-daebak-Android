@@ -14,8 +14,39 @@
         android:layout_marginBottom="11dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="goto"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/image_navi_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/property1_variant3" />
+
+    <ImageView
+        android:id="@+id/image_navi_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/navi_bar" />
+
+    <ImageView
+        android:id="@+id/image_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_money" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_money"
+        app:srcCompat="@drawable/tmp_mainui" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -84,11 +84,15 @@ class SubActivity : AppCompatActivity() {
             }
         })
 
+        val intent = Intent(this, EndActivity::class.java)
+
         binding.buttonUpload.setOnClickListener{
             Log.e("TAG", t_expenseType)
             val t_amount = edittext_cost.getText().toString().toDouble()
             val t_userId = 1
             startUpload(t_expenseType, t_amount, formatType.format(nowDate), t_userId)
+
+            startActivity(intent)
         }
     }
 
